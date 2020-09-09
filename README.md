@@ -76,3 +76,53 @@ And using expired token will result in:
 
 The `error_description` provides the details.
 
+
+### CRM API (simplified)
+This is a simplified API that only allows creating of prospects.
+
+The end point is `/slp-lsq/api/crm/parents`
+
+To create a new contact you need to issue a POST request with the following content:
+
+    POST https://uat.studentlogic.pro/slp-lsq/api/crm/parents
+    Content-Type: application/json
+    Accept: text/json
+    Authorization: Bearer xnAyft44nhAAtxxH56T99shgfFNnAOUTZpgRa95q
+
+    {
+      "parent": {
+        "tenant_id": 1,
+        "name": "Testy 3",
+        "email": "testy@nl-abc.com",
+        "primary_relation_id": 2,
+        "phone": "6512345001"
+      },
+      "students": [
+        {
+          "name": "Testy Kid 3",
+          "gender_id": 1,
+          "date_of_birth": "2015-01-05"
+        }
+      ],
+      "address": {
+        "address1": "Testy Address",
+        "address2": "Line 2",
+        "address3": "Line 3",
+        "city": "Singapore",
+        "country_id": 65
+      }
+    }
+
+For the `parent` object, all the fields are required. `students` accepts an array - again all fields are required. At the moment, the system will accept empty array (but it must be present), although it's preferable to create a complete family record. `address` is optional (can be omitted) and each fields is optional as well.
+
+##### Validation
+- phone - must follow format 65xxxxxxxx (65 followed by 8 digits - no spaces or other characters) (this is the required format for the SMS system)
+- email - must be a valid email
+- both phone and email must be unique
+- tenant_id - must be a valid branch ID - the list of branches can be obtained here:
+
+      curl -H "Authorization: Bearer ${access_token}" https://uat.studentlogic.pro/slp-lsq/api/settings/tenants
+      
+- primary_relation_id - must be a valid relationship type ID - the list can be obtained here:
+
+      curl -H "Authorization: Bearer ${access_token}" https://uat.studentlogic.pro/slp-lsq/api/settings/relation_types
