@@ -126,3 +126,8 @@ For the `parent` object, all the fields are required. `students` accepts an arra
 - primary_relation_id - must be a valid relationship type ID - the list can be obtained here:
 
       curl -H "Authorization: Bearer ${access_token}" https://uat.studentlogic.pro/slp-lsq/api/settings/relation_types
+
+- country_id - must be either null or a valid country ID - the list can be obtained here:
+
+      curl -H "Authorization: Bearer ${access_token}" https://uat.studentlogic.pro/slp-lsq/api/settings/countries
+- gender_id - 1 for male or 2 for female
