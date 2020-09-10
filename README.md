@@ -1,6 +1,6 @@
-# StudentLogic and LeadSquare Integration
+# StudentLogic and LeadSquared Integration
 
-A documentation for the integration with LeadSquare and description of the API provided by StudentLogic for pushing the prospect details.
+A documentation for the integration with LeadSquared and description of the API provided by StudentLogic for pushing the prospect details.
 
 ### OAuth2 Authentication
 There are 2 options available - either using account credentials (client_id with client_password) or authentication using a user account. The first option doesn't require end user involvement and it's preferable for the testing/UAT phase.
