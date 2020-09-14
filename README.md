@@ -91,6 +91,7 @@ To create a new contact you need to issue a POST request with the following cont
 
     {
       "parent": {
+        "lsq_uuid": "646c7c81-ebbd-440a-8894-a0f3ebd106ea",
         "tenant_id": 1,
         "name": "Testy 3",
         "email": "testy@nl-abc.com",
@@ -119,6 +120,7 @@ For the `parent` object, all the fields are required. `students` accepts an arra
 - phone - must follow format 65xxxxxxxx (65 followed by 8 digits - no spaces or other characters) (this is the required format for the SMS system)
 - email - must be a valid email
 - both phone and email must be unique
+- lsq_uuid - LSQ identification of the record - I believe this is the `RelatedId` 
 - tenant_id - must be a valid branch ID - the list of branches can be obtained here:
 
       curl -H "Authorization: Bearer ${access_token}" https://uat.studentlogic.pro/slp-lsq/api/settings/tenants
